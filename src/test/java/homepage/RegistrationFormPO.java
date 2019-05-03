@@ -63,9 +63,9 @@ public class RegistrationFormPO extends LoadableComponent<RegistrationFormPO>
 	}
 	
 	
-	public void setEmail(String mail)
+	public void setEmail(int num)
 	{
-		email.sendKeys(mail);
+		email.sendKeys("username"+num+"@test.com");
 	}
 	
 	public void setPassword(String pwd)

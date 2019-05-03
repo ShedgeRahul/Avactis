@@ -7,13 +7,16 @@ import homepage.MyAccountPO;
 import homepage.RegistrationFormPO;
 import utility.ConfigProperties;
 import utility.Initialisation;
+import utility.RandomData;
+import utility.SystemDateAndTime;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.AfterMethod;
 
-public class ValidRegistrationTest {
+public class ValidRegistrationTest 
+{
 	
 	HomePO homePage;
 	MyAccountPO myAccountPage;
@@ -29,10 +32,10 @@ public class ValidRegistrationTest {
 	myAccountPage.clickSignIn();
 
 	myAccountPage.clickRegister();
-	registrationFormPage.setEmail(ConfigProperties.getProperty("REG_Email_ID")); 
+	registrationFormPage.setEmail(RandomData.randomEmail()); 
 	registrationFormPage.setPassword(ConfigProperties.getProperty("REG_PWD")); 
 	registrationFormPage.setRePassword(ConfigProperties.getProperty("REG_RePWD")); 
-	registrationFormPage.setFirstName(ConfigProperties.getProperty("REG_FName")); 
+	registrationFormPage.setFirstName(SystemDateAndTime.getSystemDateTime()); 
 	registrationFormPage.setLastName(ConfigProperties.getProperty("REG_LName")); 
 	registrationFormPage.selectCountry(ConfigProperties.getProperty("REG_County"));
 	registrationFormPage.selectState(ConfigProperties.getProperty("REG_State"));

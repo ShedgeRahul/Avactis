@@ -11,8 +11,8 @@ public class Initialisation
 	
 	public static void setBrowser(String browser, String testEnv)
 	{
-		String br = browser;
-		switch(br)
+		//String br = browser;
+		switch(browser)
 		{
 		
 		case "CH" : 

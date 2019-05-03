@@ -24,10 +24,10 @@ public class GuestEndToEndTest
   @Test(dataProvider = "productDetails")
   public void guestEndToEndTest(String menu, String subMenu, String product, double cost) 
   {
-	  this.category = menu;
-	  this.subcategory = subMenu;
-	  this.product = product;
-	  this.price = cost;
+	//  this.category = menu;
+	 // this.subcategory = subMenu;
+	 // this.product = product;
+	//  this.price = cost;
 	  
 	  addToCart.setProductDetails(category, subcategory, product, price);
 	  addToCart.selectProducts();  

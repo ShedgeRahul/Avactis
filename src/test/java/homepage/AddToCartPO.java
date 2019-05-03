@@ -20,7 +20,7 @@ public class AddToCartPO extends LoadableComponent<AddToCartPO>
 	private String product = "Asus Eee PC Touch";
 	private double price = 0;
 	
-	//@FindBy (xpath = "//a[contains(text(),'"+category+"')]")
+	@FindBy (xpath = "//a[contains(text(),'Computers')]")
 	WebElement cat;
 	
 	@FindBy (xpath = "//a[contains(text(),'Notebooks')]")

@@ -4,7 +4,7 @@
   <parameter environment="TestEnv" value="http://localhost/Avactis/"></parameter>
   <test name="Test">
     <classes>
-      <class name="tests.ValidLoginTest"/>
+      <class name="tests.ValidRegistrationTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
