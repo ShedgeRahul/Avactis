@@ -1,58 +1,178 @@
 package tests;
 
 import org.testng.annotations.Test;
-
+import utility.CustomListener;
 import homepage.AddToCartPO;
+import homepage.AdminLoginPO;
+import homepage.CheckoutPO;
+import homepage.ThankYouPO;
 import utility.ConfigProperties;
 import utility.Initialisation;
+import utility.Log;
+import utility.RandomData;
+import utility.SystemDateAndTime;
 import utility.XlsDP;
 
 import org.testng.annotations.BeforeMethod;
+
+import org.apache.log4j.xml.DOMConfigurator;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
+@Listeners (CustomListener.class)
 public class GuestEndToEndTest 
 {
+	String orderID;
+	 double actualOrdetTotal;
+	double shippingCost;
+	 int expectedProductCount = 0;
+	double expectedOrdetTotal;
 	AddToCartPO addToCart;
-	private String category;
-	private String subcategory;
-	private String product;
-	private double price;
-	
-  @Test(dataProvider = "productDetails")
-  public void guestEndToEndTest(String menu, String subMenu, String product, double cost) 
-  {
-	//  this.category = menu;
-	 // this.subcategory = subMenu;
-	 // this.product = product;
-	//  this.price = cost;
-	  
-	  addToCart.setProductDetails(category, subcategory, product, price);
-	  addToCart.selectProducts();  
-  }
-  
-  @Parameters({"Browser","TestEnv"})
-  @BeforeMethod
-  public void beforeMethod(@Optional ("CH") String browser, @Optional ("http://localhost/Avactis/") String testEnv) 
+	CheckoutPO checkoutPage;
+	ThankYouPO thankYouPage;
+	AdminLoginPO adminLoginPage;
+  @Parameters({"Browser","TestEnv"})	
+  @BeforeClass
+  public void beforeClass(@Optional ("CH") String browser, @Optional ("http://localhost/Avactis/") String testEnv)
   {
 	  Initialisation.setBrowser(browser, testEnv);
-	  addToCart = new AddToCartPO();
+  }
+	
+  @Test(dataProvider = "productsDetails")
+  public void guestSelectProductTest(String menu, String subMenu, String product, String cost) throws InterruptedException 
+  {	  
+	  expectedProductCount++;
+	  System.out.println("category-"+menu+" subcategory-"+subMenu+" product-"+product+" price-"+cost);
+	  Log.info("Inside Test Method");
+	  addToCart.setProductDetails(menu, subMenu, product, cost);
+	  addToCart.selectProducts();
+	
+	  String newCost = cost.replaceAll("[$,]", "");
+	  System.out.println("Cost after removing doller - "+newCost);
+	  System.out.println("Value after parsing from String to double -"+Double.parseDouble(newCost));  
+	  expectedOrdetTotal = expectedOrdetTotal + Double.parseDouble(newCost);
+	  System.out.println("Expected total after removing doller - "+expectedOrdetTotal);
+	  Log.info("Test Method Completed");
+  
+  }
+  
+  @Test (dependsOnMethods = {"guestSelectProductTest"})
+  public void verifyMinicartCountTest()
+  {
+	 int selectedIteamsCount = addToCart.minicartIteamsSize();
+	 Assert.assertEquals(selectedIteamsCount, expectedProductCount);
+	 Log.info("Expected and actual product count matched ");
+  }
+  
+  @Test (dependsOnMethods = {"verifyMinicartCountTest"})
+  public void setShippingBillingAddressTest()
+  {
+	  addToCart.checkout();
+
+	  checkoutPage.setFirstName(SystemDateAndTime.getSystemDateTime()); 
+	  checkoutPage.setLastName(ConfigProperties.getProperty("REG_LName")); 
+	  checkoutPage.setEmail(RandomData.randomEmail());
+	  checkoutPage.selectCountry(ConfigProperties.getProperty("REG_County"));
+	  checkoutPage.selectState(ConfigProperties.getProperty("REG_State"));
+	  checkoutPage.setZip(ConfigProperties.getProperty("REG_Zip"));
+	  checkoutPage.setCity(ConfigProperties.getProperty("REG_City"));
+	  checkoutPage.setAddress1(ConfigProperties.getProperty("REG_Address1"));
+	  checkoutPage.setAddress2(ConfigProperties.getProperty("REG_Address2"));
+	  checkoutPage.setPhone(ConfigProperties.getProperty("REG_Phone"));
+	  checkoutPage.selectSameShippingAddress();
+	  checkoutPage.clickContinueCheckout();
+
+  Assert.assertEquals(checkoutPage.readLineOfAddress(), ConfigProperties.getProperty("REG_Address1"));
+  Log.info("Entered first line of Address is verified ");
+  }
+  
+  
+  @Test (dependsOnMethods = {"setShippingBillingAddressTest"})
+  public void  reviewAndPlaceOrderTest() throws InterruptedException
+  {
+	checkoutPage.selectThirdShippingOption();
+	String shippingCostWithDoller = checkoutPage.getShippingCost();
+	System.out.println("Shipping cost with doller - "+shippingCostWithDoller);
+	 
+	String newshippingCost = shippingCostWithDoller.replaceAll("[$,]","");
+	System.out.println("After removing Doller from shipping cost - "+newshippingCost);
+	shippingCost = Double.parseDouble(newshippingCost);
+	System.out.println("Shipping cost after parsing string to double - "+shippingCost);
+	
+	System.out.println("Expected Order Total before adding shipping cost - "+expectedOrdetTotal);
+	expectedOrdetTotal = expectedOrdetTotal + shippingCost;
+	System.out.println("Expected Total Cost after adding shipping cost - "+expectedOrdetTotal);
+	 
+	
+	 checkoutPage.clickLastContinueCheckout();
+	 
+	 String actualOrdetTotalWithDoller = checkoutPage.getOrderTotal();
+	 System.out.println("Actual Oreder Total with Doller - "+actualOrdetTotalWithDoller);
+	 String newActualOrdetTotal = actualOrdetTotalWithDoller.replaceAll("[$,]","");
+	 System.out.println("Actual Order Total Cost after removing doller - "+newActualOrdetTotal);
+	 actualOrdetTotal = Double.parseDouble(newActualOrdetTotal);
+	 System.out.println("Actual order total after parsing from Sring to Double - "+actualOrdetTotal);
+	 
+	Assert.assertEquals(actualOrdetTotal,expectedOrdetTotal);
+	Log.info("On Place Order page Actual and Expected Order Total is matched");
+	
+	//checkoutPage.getCellData(3, 1);
+	
+	checkoutPage.clickPlaceOrder();
+	
+	thankYouPage.getOrderID();
+	String finalOrderTotalWithDollar = thankYouPage.getFinalOrderTotal();
+	String finalOrderTotalwithoutDoller = finalOrderTotalWithDollar.replaceAll("[$,]","");
+	double finalOrderTotal = Double.parseDouble(finalOrderTotalwithoutDoller);
+	
+	Assert.assertEquals(finalOrderTotal, expectedOrdetTotal);
+	Log.info("On Thank You page Final Order and Expected Order total is matched ");
+	
+  }
+  
+  
+ // @Test (dependsOnMethods = {"setShippingBillingAddressTest"})
+  public void adminVerification()
+  {
+	  adminLoginPage.openAdminSite();
+	  adminLoginPage.setUserID(ConfigProperties.getProperty("Admin_Email"));
+	  adminLoginPage.setPassword(ConfigProperties.getProperty("Admin_Password"));
+	  adminLoginPage.clickSignIn();
+	  adminLoginPage.clickTitleOrders();
+  }
+  
+  
+  @BeforeMethod
+  public void beforeMethod() 
+  {
+	  Log.info("Inside Before Method");
+	  addToCart = new AddToCartPO();  
+	  checkoutPage = new CheckoutPO();
+	  thankYouPage = new ThankYouPO();
+	  adminLoginPage = new AdminLoginPO();
+	  DOMConfigurator.configure("log4j-config.xml");
+	  Log.info("Before method completed");
   }
 
   @AfterMethod
   public void afterMethod() 
   {
-	  
+	 // Log.info("Driver Close");
+	  //Initialisation.quitBrowser();
   }
 
 
   @DataProvider(name = "productsDetails")
   public Object[][] getTestData()
   {
+	  Log.info("Inside dataprovider ");
 	ConfigProperties.loadProperties();
-  	String[][] testData = XlsDP.getDataFromXLSUsingJXL(ConfigProperties.getProperty("File_Path"), "ProductDetails", ConfigProperties.getProperty("Table_Name"));
+  	String[][] testData = XlsDP.getDataFromXLSUsingJXL(ConfigProperties.getProperty("File_Path"), ConfigProperties.getProperty("Sheet2_Name"), ConfigProperties.getProperty("Table_Name"));
   	return(testData);
   }
 

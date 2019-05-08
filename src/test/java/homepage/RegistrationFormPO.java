@@ -5,8 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import utility.Initialisation;
@@ -54,88 +56,96 @@ public class RegistrationFormPO extends LoadableComponent<RegistrationFormPO>
 	
 	private WebDriver driver;
 	private String expectedTitle = "Avactis Demo Store";
+	private WebDriverWait wait;
 	
 	public RegistrationFormPO()
 	{
 		driver = Initialisation.getDriver();
 		PageFactory.initElements(driver, this);
+		wait = new WebDriverWait(driver,10);
 		isLoaded();
 	}
 	
 	
 	public void setEmail(int num)
 	{
-		email.sendKeys("username"+num+"@test.com");
+		wait.until(ExpectedConditions.visibilityOf(email)).sendKeys("username"+num+"@test.com");
+		//email.sendKeys("username"+num+"@test.com");
 	}
 	
 	public void setPassword(String pwd)
 	{
-		password.sendKeys(pwd);
+		wait.until(ExpectedConditions.visibilityOf(password)).sendKeys(pwd);
+		//password.sendKeys(pwd);
 	}
 	
 	public void setRePassword(String repwd)
 	{
-		rePassword.sendKeys(repwd);
+		wait.until(ExpectedConditions.visibilityOf(rePassword)).sendKeys(repwd);
+		//rePassword.sendKeys(repwd);
 	}
 	
 	public void setFirstName(String fname)
 	{
-		firstName.sendKeys(fname);
+		wait.until(ExpectedConditions.visibilityOf(firstName)).sendKeys(fname);
+		//firstName.sendKeys(fname);
 	}
 	
 	public void setLastName(String lname)
 	{
-		lastName.sendKeys(lname);
+		wait.until(ExpectedConditions.visibilityOf(lastName)).sendKeys(lname);
+		//lastName.sendKeys(lname);
 	}
 	
 	public void selectCountry(String countryname)
 	{
-		Select countrydropdown = new Select(country);
+		
+		Select countrydropdown = new Select(wait.until(ExpectedConditions.visibilityOf(country)));
 		countrydropdown.selectByVisibleText(countryname);
 	}
 
 	
 	public void selectState(String statename)
 	{
-		Select statedropdown = new Select(state);
+		Select statedropdown = new Select(wait.until(ExpectedConditions.visibilityOf(state)));
 		statedropdown.selectByVisibleText(statename);		
 	}
 	
-	/*public void selectState(String statename)
-	{
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("Select statedropdown = new Select(state);statedropdown.selectByVisibleText(statename)");		
-	}*/
-	
 	public void setZip(String postalcode)
 	{
-		zip.sendKeys(postalcode);
+		wait.until(ExpectedConditions.visibilityOf(zip)).sendKeys(postalcode);
+		//zip.sendKeys(postalcode);
 	}
 
 	
 	public void setCity(String cityname)
 	{
-		city.sendKeys(cityname);
+		wait.until(ExpectedConditions.visibilityOf(city)).sendKeys(cityname);
+		//city.sendKeys(cityname);
 	}
 
 	public void setAddress1(String firstAddress)
 	{
-		address1.sendKeys(firstAddress);
+		wait.until(ExpectedConditions.visibilityOf(address1)).sendKeys(firstAddress);
+		//address1.sendKeys(firstAddress);
 	}
 	
 	public void setAddress2(String secoundAddress)
 	{
-		address2.sendKeys(secoundAddress);
+		wait.until(ExpectedConditions.visibilityOf(address2)).sendKeys(secoundAddress);
+		//address2.sendKeys(secoundAddress);
 	}
 	
 	public void setPhone(String phonenumber)
 	{
-		phone.sendKeys(phonenumber);
+		wait.until(ExpectedConditions.visibilityOf(phone)).sendKeys(phonenumber);
+		//phone.sendKeys(phonenumber);
 	}
 	
 	public void clickRegister()
 	{
-		register.click();
+		wait.until(ExpectedConditions.visibilityOf(register)).click();
+		//register.click();
 	}
 
 	public String getTitle()

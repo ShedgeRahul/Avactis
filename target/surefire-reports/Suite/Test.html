@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>5/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri May 03 15:15:34 IST 2019</td>
+<td>Started on:</td><td>Wed May 08 10:08:06 IST 2019</td>
 </tr>
-<tr><td>Total time:</td><td>26 seconds (26489 ms)</td>
+<tr><td>Total time:</td><td>79 seconds (79850 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,63 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='tests.GuestEndToEndTest.reviewAndPlaceOrderTest()'><b>reviewAndPlaceOrderTest</b><br>Test class: tests.GuestEndToEndTest</td>
+<td><div><pre>java.lang.IllegalArgumentException: Key Down / Up events only make sense for modifier keys.
+	at org.openqa.selenium.interactions.internal.SingleKeyAction.&lt;init&gt;(SingleKeyAction.java:49)
+	at org.openqa.selenium.interactions.internal.SingleKeyAction.&lt;init&gt;(SingleKeyAction.java:37)
+	at org.openqa.selenium.interactions.KeyDownAction.&lt;init&gt;(KeyDownAction.java:40)
+	at org.openqa.selenium.interactions.Actions.keyDown(Actions.java:115)
+	at homepage.CheckoutPO.selectThirdShippingOption(CheckoutPO.java:187)
+	at tests.GuestEndToEndTest.reviewAndPlaceOrderTest(GuestEndToEndTest.java:98)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1200546947", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1200546947'><pre>java.lang.IllegalArgumentException: Key Down / Up events only make sense for modifier keys.
+	at org.openqa.selenium.interactions.internal.SingleKeyAction.&lt;init&gt;(SingleKeyAction.java:49)
+	at org.openqa.selenium.interactions.internal.SingleKeyAction.&lt;init&gt;(SingleKeyAction.java:37)
+	at org.openqa.selenium.interactions.KeyDownAction.&lt;init&gt;(KeyDownAction.java:40)
+	at org.openqa.selenium.interactions.Actions.keyDown(Actions.java:115)
+	at homepage.CheckoutPO.selectThirdShippingOption(CheckoutPO.java:187)
+	at tests.GuestEndToEndTest.reviewAndPlaceOrderTest(GuestEndToEndTest.java:98)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:283)
+	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:75)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:120)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+</pre></div></td>
+<td>0</td>
+<td>tests.GuestEndToEndTest@47f6473</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -75,10 +132,30 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='tests.ValidRegistrationTest.validRegistration()'><b>validRegistration</b><br>Test class: tests.ValidRegistrationTest</td>
+<td title='tests.GuestEndToEndTest.guestSelectProductTest()'><b>guestSelectProductTest</b><br>Test class: tests.GuestEndToEndTest<br>Parameters: NA, NA, Sea Eagle Sport Kayak, 523.00</td>
+<td></td>
+<td>9</td>
+<td>tests.GuestEndToEndTest@47f6473</td></tr>
+<tr>
+<td title='tests.GuestEndToEndTest.guestSelectProductTest()'><b>guestSelectProductTest</b><br>Test class: tests.GuestEndToEndTest<br>Parameters: Apparel, NA, Pure cotton T-Shirt, 13.99</td>
+<td></td>
+<td>27</td>
+<td>tests.GuestEndToEndTest@47f6473</td></tr>
+<tr>
+<td title='tests.GuestEndToEndTest.guestSelectProductTest()'><b>guestSelectProductTest</b><br>Test class: tests.GuestEndToEndTest<br>Parameters: Computers, Notebooks, Apple MacBook Laptop, 999.00</td>
 <td></td>
 <td>12</td>
-<td>tests.ValidRegistrationTest@1e67b872</td></tr>
+<td>tests.GuestEndToEndTest@47f6473</td></tr>
+<tr>
+<td title='tests.GuestEndToEndTest.setShippingBillingAddressTest()'><b>setShippingBillingAddressTest</b><br>Test class: tests.GuestEndToEndTest</td>
+<td></td>
+<td>9</td>
+<td>tests.GuestEndToEndTest@47f6473</td></tr>
+<tr>
+<td title='tests.GuestEndToEndTest.verifyMinicartCountTest()'><b>verifyMinicartCountTest</b><br>Test class: tests.GuestEndToEndTest</td>
+<td></td>
+<td>0</td>
+<td>tests.GuestEndToEndTest@47f6473</td></tr>
 </table><p>
 </body>
 </html>

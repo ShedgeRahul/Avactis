@@ -4,10 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.LoadableComponent;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import utility.Initialisation;
+import utility.Log;
 
 public class HomePO extends LoadableComponent<HomePO>
 
@@ -26,32 +29,38 @@ public class HomePO extends LoadableComponent<HomePO>
 	
 	private WebDriver driver;
 	private String expectedTitle = "Avactis Demo Store";
-	
+	private WebDriverWait wait;
 	public HomePO()
 	{	
 		driver = Initialisation.getDriver();
 		PageFactory.initElements(driver, this);
+		wait = new WebDriverWait(driver,10);
 		isLoaded();
 	}
 	
 	public void clickSignIn()
 	{
-		signin.click();
+		wait.until(ExpectedConditions.visibilityOf(signin)).click();
+		//signin.click();
+		Log.debug("Clicked on Homepage Signin ");
 	}
 	
 	public void clickMyAccount()
 	{
-		myaccount.click();
+		wait.until(ExpectedConditions.visibilityOf(myaccount)).click();
+		//myaccount.click();
 	}
 
 	public void clickMyCart()
 	{
-		mycart.click();
+		wait.until(ExpectedConditions.visibilityOf(mycart)).click();
+		//mycart.click();
 	}
 
 	public void clickCheckout()
 	{
-		checkout.click();
+		wait.until(ExpectedConditions.visibilityOf(checkout)).click();
+		//checkout.click();
 	}
 
 	

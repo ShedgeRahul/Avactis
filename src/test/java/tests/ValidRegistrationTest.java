@@ -3,7 +3,7 @@ package tests;
 import org.testng.annotations.Test;
 
 import homepage.HomePO;
-import homepage.MyAccountPO;
+import homepage.LoginPO;
 import homepage.RegistrationFormPO;
 import utility.ConfigProperties;
 import utility.Initialisation;
@@ -19,7 +19,7 @@ public class ValidRegistrationTest
 {
 	
 	HomePO homePage;
-	MyAccountPO myAccountPage;
+	LoginPO loginPage;
 	RegistrationFormPO registrationFormPage;
 
  @Test 
@@ -27,11 +27,11 @@ public class ValidRegistrationTest
   {
 	  
 	homePage.clickSignIn();
-	myAccountPage.setEmail(ConfigProperties.getProperty("CUST_Email"));
-	myAccountPage.setPassword(ConfigProperties.getProperty("CUST_Password"));
-	myAccountPage.clickSignIn();
+	loginPage.setEmail(ConfigProperties.getProperty("CUST_Email"));
+	loginPage.setPassword(ConfigProperties.getProperty("CUST_Password"));
+	loginPage.clickSignIn();
 
-	myAccountPage.clickRegister();
+	loginPage.clickRegister();
 	registrationFormPage.setEmail(RandomData.randomEmail()); 
 	registrationFormPage.setPassword(ConfigProperties.getProperty("REG_PWD")); 
 	registrationFormPage.setRePassword(ConfigProperties.getProperty("REG_RePWD")); 
@@ -54,7 +54,7 @@ public class ValidRegistrationTest
 	  Initialisation.setBrowser(browser, testEnv);
 	  ConfigProperties.loadProperties();
 	  homePage = new HomePO();
-	  myAccountPage = new MyAccountPO();
+	  loginPage = new LoginPO();
 	  registrationFormPage = new RegistrationFormPO();
   }
 

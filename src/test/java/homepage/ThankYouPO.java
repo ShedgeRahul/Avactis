@@ -1,8 +1,5 @@
 package homepage;
 
-
-
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,16 +11,19 @@ import org.testng.Assert;
 
 import utility.Initialisation;
 
-public class MyAccountPO extends LoadableComponent<MyAccountPO>
+public class ThankYouPO extends LoadableComponent<ThankYouPO> 
 {
-	@FindBy (xpath = "//a[text()='Sign Out']")
-	WebElement signOut;
-	
 	private WebDriver driver;
-	private String expectedTitle = "Avactis Demo Store";
 	private WebDriverWait wait;
+	private String expectedTitle = "Avactis Demo Store";
 	
-	public MyAccountPO()
+	@FindBy (xpath = "//label[text()='Order Id:']/following::div[@class='col-lg-6'][1]")
+	WebElement orderID;
+	
+	@FindBy (xpath = "//em[text()='Order Total:']/following::strong")
+	WebElement finalOrderTotal;
+	
+	public ThankYouPO() 
 	{
 		driver = Initialisation.getDriver();
 		PageFactory.initElements(driver, this);
@@ -31,36 +31,30 @@ public class MyAccountPO extends LoadableComponent<MyAccountPO>
 		wait = new WebDriverWait(driver, 10);
 	}
 	
-	public String getLinkTitle()
+	public String getOrderID()
 	{
+		return wait.until(ExpectedConditions.visibilityOf(orderID)).getText();
+	}
+	
+	public String getFinalOrderTotal()
+	{
+		return wait.until(ExpectedConditions.visibilityOf(finalOrderTotal)).getText();
+	}
+	
+	
+	@Override
+	protected void isLoaded() throws Error {
+		// TODO Auto-generated method stub
 		
-	try {
-		return wait.until(ExpectedConditions.visibilityOf(signOut)).getText();
-		}
-	catch (NoSuchElementException e) 
-		{
-			Assert.fail("Element not found");
-		}
-	catch (Exception e) 
-	{
-		Assert.fail();
-	}
-	return "fail";
-	
 	}
 
 	@Override
-	protected void isLoaded() throws Error 
-	{
+	protected void load() {
 		// TODO Auto-generated method stub
-		driver.get("http://localhost/Avactis/");
-	}
-
-	@Override
-	protected void load() 
-	{
-		// TODO Auto-generated method stub
-		Assert.assertEquals(driver.getTitle(), expectedTitle);
+	Assert.assertEquals(driver.getTitle(), expectedTitle);	
 	}
 	
+	
+	
+
 }

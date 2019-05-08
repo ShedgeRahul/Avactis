@@ -9,10 +9,22 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="7">Suite</th></tr>
-<tr><td><a href="#t0">Test</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">26,489</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Test</a></td><td class="num">5</td><td class="num">0</td><td class="num attn">1</td><td class="num">79,850</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">tests.ValidRegistrationTest</td><td><a href="#m0">validRegistration</a></td><td rowspan="1">1556876748261</td><td rowspan="1">12434</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">tests.GuestEndToEndTest</td><td><a href="#m0">reviewAndPlaceOrderTest</a></td><td rowspan="1">1557290365900</td><td rowspan="1">8</td></tr><tr><th colspan="4">Test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="5">tests.GuestEndToEndTest</td><td><a href="#m1">guestSelectProductTest</a></td><td rowspan="3">1557290315762</td><td rowspan="3">27437</td></tr><tr class="passedeven"><td><a href="#m2">guestSelectProductTest</a></td></tr><tr class="passedeven"><td><a href="#m3">guestSelectProductTest</a></td></tr><tr class="passedeven"><td><a href="#m4">setShippingBillingAddressTest</a></td><td rowspan="1">1557290356223</td><td rowspan="1">9662</td></tr><tr class="passedeven"><td><a href="#m5">verifyMinicartCountTest</a></td><td rowspan="1">1557290356169</td><td rowspan="1">33</td></tr></tbody>
 </table>
-<h2>Test</h2><h3 id="m0">tests.ValidRegistrationTest#validRegistration</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Test</h2><h3 id="m0">tests.GuestEndToEndTest#reviewAndPlaceOrderTest</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.IllegalArgumentException: Key Down / Up events only make sense for modifier keys.
+	at org.openqa.selenium.interactions.internal.SingleKeyAction.&lt;init&gt;(SingleKeyAction.java:49)
+	at org.openqa.selenium.interactions.internal.SingleKeyAction.&lt;init&gt;(SingleKeyAction.java:37)
+	at org.openqa.selenium.interactions.KeyDownAction.&lt;init&gt;(KeyDownAction.java:40)
+	at org.openqa.selenium.interactions.Actions.keyDown(Actions.java:115)
+	at homepage.CheckoutPO.selectThirdShippingOption(CheckoutPO.java:187)
+	at tests.GuestEndToEndTest.reviewAndPlaceOrderTest(GuestEndToEndTest.java:98)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">tests.GuestEndToEndTest#guestSelectProductTest</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th></tr><tr class="param stripe"><td>Apparel</td><td>NA</td><td>Pure cotton T-Shirt</td><td>13.99</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">tests.GuestEndToEndTest#guestSelectProductTest</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th></tr><tr class="param stripe"><td>Computers</td><td>Notebooks</td><td>Apple MacBook Laptop</td><td>999.00</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">tests.GuestEndToEndTest#guestSelectProductTest</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th></tr><tr class="param stripe"><td>NA</td><td>NA</td><td>Sea Eagle Sport Kayak</td><td>523.00</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">tests.GuestEndToEndTest#setShippingBillingAddressTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">tests.GuestEndToEndTest#verifyMinicartCountTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

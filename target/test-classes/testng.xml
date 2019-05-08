@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Suite" parallel="false">
+
+	<listeners>
+		<listeners class-name="org.uncommons.reportng.HTMLReport"/>
+		<listeners class-name="org.uncommons.reportng.XMLReport"/>
+	</listeners>
+
   <parameter name="Browser" value="CH"></parameter>
   <parameter environment="TestEnv" value="http://localhost/Avactis/"></parameter>
   <test name="Test">
     <classes>
-      <class name="tests.ValidRegistrationTest"/>
+      <class name="tests.GuestEndToEndTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
