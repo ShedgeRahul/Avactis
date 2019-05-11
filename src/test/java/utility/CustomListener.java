@@ -10,9 +10,13 @@ public class CustomListener extends Initialisation implements ITestListener
 {
 
 	@Override
-	public void onTestStart(ITestResult result) {
-		// TODO Auto-generated method stub
-		
+	public void onTestStart(ITestResult result) 
+	{
+		Log.info("****************************************************************************************************");
+		Log.info("                                                                                                    ");
+		Log.info("                       "+result.getMethod().getMethodName()+" Started 							  ");
+		Log.info("                                                                                                    ");
+		Log.info("****************************************************************************************************");
 	}
 
 	@Override

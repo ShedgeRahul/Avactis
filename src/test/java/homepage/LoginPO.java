@@ -26,6 +26,9 @@ public class LoginPO extends LoadableComponent<LoginPO>
 	@FindBy (xpath = "//input[@class='btn btn-primary input_submit']")
 	WebElement signIn;
 	
+	@FindBy (xpath = "//div[text()='Account and password could not be identified. Try again or create an account.']")
+	WebElement invalidLoginMessage;
+	
 	private WebDriver driver;
 	private String expectedTitle = "Avactis Demo Store";
 	private WebDriverWait wait;
@@ -64,6 +67,12 @@ public class LoginPO extends LoadableComponent<LoginPO>
 		wait.until(ExpectedConditions.visibilityOf(signIn)).click();
 		//signIn.click();
 		Log.warn("Clicked on signIn button");
+	}
+	
+	public String getInvalidLogInMessage()
+	{
+		String text = wait.until(ExpectedConditions.visibilityOf(invalidLoginMessage)).getText();
+		return text;
 	}
 	
 	public void close()

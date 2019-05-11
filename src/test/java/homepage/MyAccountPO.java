@@ -19,6 +19,9 @@ public class MyAccountPO extends LoadableComponent<MyAccountPO>
 	@FindBy (xpath = "//a[text()='Sign Out']")
 	WebElement signOut;
 	
+	@FindBy (xpath = "//div[text()='Account created successfully. You are now registered.']")
+	WebElement successfullyRegisteredMessage;
+	
 	private WebDriver driver;
 	private String expectedTitle = "Avactis Demo Store";
 	private WebDriverWait wait;
@@ -29,6 +32,11 @@ public class MyAccountPO extends LoadableComponent<MyAccountPO>
 		PageFactory.initElements(driver, this);
 		isLoaded();
 		wait = new WebDriverWait(driver, 10);
+	}
+	
+	public void clickSignOut()
+	{
+		wait.until(ExpectedConditions.visibilityOf(signOut)).click();
 	}
 	
 	public String getLinkTitle()
@@ -42,11 +50,16 @@ public class MyAccountPO extends LoadableComponent<MyAccountPO>
 			Assert.fail("Element not found");
 		}
 	catch (Exception e) 
-	{
-		Assert.fail();
-	}
+		{
+			Assert.fail();
+		}
 	return "fail";
+	}
 	
+	public String getSuccessMessage()
+	{
+	
+		return (wait.until(ExpectedConditions.visibilityOf(successfullyRegisteredMessage))).getText();
 	}
 
 	@Override

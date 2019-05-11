@@ -1,10 +1,10 @@
 package homepage;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
+
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.LoadableComponent;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
 
 import utility.Initialisation;
 import utility.Log;
@@ -175,20 +176,24 @@ public class CheckoutPO extends LoadableComponent<CheckoutPO>
 		return wait.until(ExpectedConditions.visibilityOf(firstLineOfAddress)).getText(); 
 	}
 	
-	public void selectThirdShippingOption() throws InterruptedException 
+	public void selectThirdShippingOption()
 	{
+		
+	/*	JavascriptExecutor je = (JavascriptExecutor) driver;
+		je.executeScript("arguments[0].scrollIntoView(true);",thirdShippingOption);*/
 /*		WebElement element = wait.until(ExpectedConditions.visibilityOf(thirdShippingOption));
 
 		WebElement element = driver.findElement(By.id("id_of_element"));*/
 /*		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", thirdShippingOption);
 		Thread.sleep(5000);*/
 		
-		Actions builder = new Actions(driver);
+	/*	Actions builder = new Actions(driver);
 		builder.keyDown(Keys.ARROW_UP).build().perform();
 		
 		builder.keyUp(Keys.ARROW_UP).build().perform();
+	*/	
 		wait.until(ExpectedConditions.visibilityOf(thirdShippingOption)).click();
-		
+	
 	}
 	
 	public String getShippingCost()

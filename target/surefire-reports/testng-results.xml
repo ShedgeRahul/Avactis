@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" ignored="0" total="6" passed="5">
+<testng-results skipped="0" failed="0" ignored="0" total="9" passed="9">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="79850" started-at="2019-05-08T04:38:06Z" finished-at="2019-05-08T04:39:26Z">
+  <suite name="Suite" duration-ms="153204" started-at="2019-05-11T06:24:57Z" finished-at="2019-05-11T06:27:30Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="79850" started-at="2019-05-08T04:38:06Z" finished-at="2019-05-08T04:39:26Z">
-      <class name="tests.GuestEndToEndTest">
-        <test-method status="PASS" signature="beforeClass(java.lang.String, java.lang.String)[pri:0, instance:tests.GuestEndToEndTest@47f6473]" name="beforeClass" is-config="true" duration-ms="17984" started-at="2019-05-08T04:38:06Z" finished-at="2019-05-08T04:38:24Z">
+    <test name="Test" duration-ms="153204" started-at="2019-05-11T06:24:57Z" finished-at="2019-05-11T06:27:30Z">
+      <class name="tests.EndToEndTest">
+        <test-method status="PASS" signature="beforeClass(java.lang.String, java.lang.String)[pri:0, instance:tests.EndToEndTest@754ba872]" name="beforeClass" is-config="true" duration-ms="20863" started-at="2019-05-11T06:24:57Z" finished-at="2019-05-11T06:25:18Z">
           <params>
             <param index="0">
               <value>
@@ -23,11 +23,23 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:tests.GuestEndToEndTest@47f6473]" name="beforeMethod" is-config="true" duration-ms="718" started-at="2019-05-08T04:38:25Z" finished-at="2019-05-08T04:38:25Z">
+        <test-method status="PASS" signature="e2eRegistrationTest()[pri:0, instance:tests.EndToEndTest@754ba872]" name="e2eRegistrationTest" duration-ms="23190" started-at="2019-05-11T06:25:18Z" finished-at="2019-05-11T06:25:41Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="guestSelectProductTest(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:tests.GuestEndToEndTest@47f6473]" name="guestSelectProductTest" duration-ms="9775" started-at="2019-05-08T04:38:25Z" data-provider="productsDetails" finished-at="2019-05-08T04:38:35Z">
+        </test-method> <!-- e2eRegistrationTest -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:tests.EndToEndTest@754ba872]" name="afterMethod" is-config="true" duration-ms="0" started-at="2019-05-11T06:25:41Z" finished-at="2019-05-11T06:25:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="e2eLogInTest()[pri:1, instance:tests.EndToEndTest@754ba872]" name="e2eLogInTest" duration-ms="15173" started-at="2019-05-11T06:25:41Z" depends-on-methods="tests.EndToEndTest.e2eRegistrationTest" finished-at="2019-05-11T06:25:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- e2eLogInTest -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:tests.EndToEndTest@754ba872]" name="afterMethod" is-config="true" duration-ms="0" started-at="2019-05-11T06:25:56Z" finished-at="2019-05-11T06:25:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="guestSelectProductTest(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:2, instance:tests.EndToEndTest@754ba872]" name="guestSelectProductTest" duration-ms="13701" started-at="2019-05-11T06:25:57Z" data-provider="productsDetails" depends-on-methods="tests.EndToEndTest.e2eLogInTest" finished-at="2019-05-11T06:26:10Z">
           <params>
             <param index="0">
               <value>
@@ -53,15 +65,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- guestSelectProductTest -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:tests.GuestEndToEndTest@47f6473]" name="afterMethod" is-config="true" duration-ms="0" started-at="2019-05-08T04:38:35Z" finished-at="2019-05-08T04:38:35Z">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:tests.EndToEndTest@754ba872]" name="afterMethod" is-config="true" duration-ms="0" started-at="2019-05-11T06:26:10Z" finished-at="2019-05-11T06:26:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:tests.GuestEndToEndTest@47f6473]" name="beforeMethod" is-config="true" duration-ms="48" started-at="2019-05-08T04:38:35Z" finished-at="2019-05-08T04:38:35Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="guestSelectProductTest(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:tests.GuestEndToEndTest@47f6473]" name="guestSelectProductTest" duration-ms="27437" started-at="2019-05-08T04:38:35Z" data-provider="productsDetails" finished-at="2019-05-08T04:39:03Z">
+        <test-method status="PASS" signature="guestSelectProductTest(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:2, instance:tests.EndToEndTest@754ba872]" name="guestSelectProductTest" duration-ms="14466" started-at="2019-05-11T06:26:10Z" data-provider="productsDetails" depends-on-methods="tests.EndToEndTest.e2eLogInTest" finished-at="2019-05-11T06:26:25Z">
           <params>
             <param index="0">
               <value>
@@ -87,15 +95,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- guestSelectProductTest -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:tests.GuestEndToEndTest@47f6473]" name="beforeMethod" is-config="true" duration-ms="21" started-at="2019-05-08T04:39:03Z" finished-at="2019-05-08T04:39:03Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:tests.GuestEndToEndTest@47f6473]" name="afterMethod" is-config="true" duration-ms="0" started-at="2019-05-08T04:39:03Z" finished-at="2019-05-08T04:39:03Z">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:tests.EndToEndTest@754ba872]" name="afterMethod" is-config="true" duration-ms="1" started-at="2019-05-11T06:26:25Z" finished-at="2019-05-11T06:26:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="guestSelectProductTest(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:tests.GuestEndToEndTest@47f6473]" name="guestSelectProductTest" duration-ms="12928" started-at="2019-05-08T04:39:03Z" data-provider="productsDetails" finished-at="2019-05-08T04:39:16Z">
+        <test-method status="PASS" signature="guestSelectProductTest(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:2, instance:tests.EndToEndTest@754ba872]" name="guestSelectProductTest" duration-ms="19906" started-at="2019-05-11T06:26:25Z" data-provider="productsDetails" depends-on-methods="tests.EndToEndTest.e2eLogInTest" finished-at="2019-05-11T06:26:45Z">
           <params>
             <param index="0">
               <value>
@@ -121,91 +125,47 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- guestSelectProductTest -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:tests.GuestEndToEndTest@47f6473]" name="afterMethod" is-config="true" duration-ms="0" started-at="2019-05-08T04:39:16Z" finished-at="2019-05-08T04:39:16Z">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:tests.EndToEndTest@754ba872]" name="afterMethod" is-config="true" duration-ms="1" started-at="2019-05-11T06:26:45Z" finished-at="2019-05-11T06:26:45Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:tests.GuestEndToEndTest@47f6473]" name="beforeMethod" is-config="true" duration-ms="16" started-at="2019-05-08T04:39:16Z" finished-at="2019-05-08T04:39:16Z">
+        <test-method status="PASS" signature="guestVerifyMinicartCountTest()[pri:3, instance:tests.EndToEndTest@754ba872]" name="guestVerifyMinicartCountTest" duration-ms="33" started-at="2019-05-11T06:26:45Z" depends-on-methods="tests.EndToEndTest.guestSelectProductTest" finished-at="2019-05-11T06:26:45Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="verifyMinicartCountTest()[pri:0, instance:tests.GuestEndToEndTest@47f6473]" name="verifyMinicartCountTest" duration-ms="33" started-at="2019-05-08T04:39:16Z" depends-on-methods="tests.GuestEndToEndTest.guestSelectProductTest" finished-at="2019-05-08T04:39:16Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyMinicartCountTest -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:tests.GuestEndToEndTest@47f6473]" name="afterMethod" is-config="true" duration-ms="1" started-at="2019-05-08T04:39:16Z" finished-at="2019-05-08T04:39:16Z">
+        </test-method> <!-- guestVerifyMinicartCountTest -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:tests.EndToEndTest@754ba872]" name="afterMethod" is-config="true" duration-ms="1" started-at="2019-05-11T06:26:45Z" finished-at="2019-05-11T06:26:45Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:tests.GuestEndToEndTest@47f6473]" name="beforeMethod" is-config="true" duration-ms="20" started-at="2019-05-08T04:39:16Z" finished-at="2019-05-08T04:39:16Z">
+        <test-method status="PASS" signature="guestSetShippingBillingAddressTest()[pri:4, instance:tests.EndToEndTest@754ba872]" name="guestSetShippingBillingAddressTest" duration-ms="12363" started-at="2019-05-11T06:26:45Z" depends-on-methods="tests.EndToEndTest.guestVerifyMinicartCountTest" finished-at="2019-05-11T06:26:57Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="setShippingBillingAddressTest()[pri:0, instance:tests.GuestEndToEndTest@47f6473]" name="setShippingBillingAddressTest" duration-ms="9662" started-at="2019-05-08T04:39:16Z" depends-on-methods="tests.GuestEndToEndTest.verifyMinicartCountTest" finished-at="2019-05-08T04:39:25Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setShippingBillingAddressTest -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:tests.GuestEndToEndTest@47f6473]" name="afterMethod" is-config="true" duration-ms="0" started-at="2019-05-08T04:39:25Z" finished-at="2019-05-08T04:39:25Z">
+        </test-method> <!-- guestSetShippingBillingAddressTest -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:tests.EndToEndTest@754ba872]" name="afterMethod" is-config="true" duration-ms="0" started-at="2019-05-11T06:26:57Z" finished-at="2019-05-11T06:26:57Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:tests.GuestEndToEndTest@47f6473]" name="beforeMethod" is-config="true" duration-ms="14" started-at="2019-05-08T04:39:25Z" finished-at="2019-05-08T04:39:25Z">
+        <test-method status="PASS" signature="guestReviewAndPlaceOrderTest()[pri:5, instance:tests.EndToEndTest@754ba872]" name="guestReviewAndPlaceOrderTest" duration-ms="13189" started-at="2019-05-11T06:26:57Z" depends-on-methods="tests.EndToEndTest.guestSetShippingBillingAddressTest" finished-at="2019-05-11T06:27:10Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="FAIL" signature="reviewAndPlaceOrderTest()[pri:0, instance:tests.GuestEndToEndTest@47f6473]" name="reviewAndPlaceOrderTest" duration-ms="8" started-at="2019-05-08T04:39:25Z" depends-on-methods="tests.GuestEndToEndTest.setShippingBillingAddressTest" finished-at="2019-05-08T04:39:25Z">
-          <exception class="java.lang.IllegalArgumentException">
-            <message>
-              <![CDATA[Key Down / Up events only make sense for modifier keys.]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.IllegalArgumentException: Key Down / Up events only make sense for modifier keys.
-at org.openqa.selenium.interactions.internal.SingleKeyAction.<init>(SingleKeyAction.java:49)
-at org.openqa.selenium.interactions.internal.SingleKeyAction.<init>(SingleKeyAction.java:37)
-at org.openqa.selenium.interactions.KeyDownAction.<init>(KeyDownAction.java:40)
-at org.openqa.selenium.interactions.Actions.keyDown(Actions.java:115)
-at homepage.CheckoutPO.selectThirdShippingOption(CheckoutPO.java:187)
-at tests.GuestEndToEndTest.reviewAndPlaceOrderTest(GuestEndToEndTest.java:98)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.lang.reflect.Method.invoke(Method.java:498)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
-at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
-at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
-at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-at org.testng.TestRunner.privateRun(TestRunner.java:648)
-at org.testng.TestRunner.run(TestRunner.java:505)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-at org.testng.TestNG.runSuites(TestNG.java:1049)
-at org.testng.TestNG.run(TestNG.java:1017)
-at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:283)
-at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:75)
-at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:120)
-at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
-at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
-at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
-at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.IllegalArgumentException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- reviewAndPlaceOrderTest -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:tests.GuestEndToEndTest@47f6473]" name="afterMethod" is-config="true" duration-ms="1" started-at="2019-05-08T04:39:26Z" finished-at="2019-05-08T04:39:26Z">
+        </test-method> <!-- guestReviewAndPlaceOrderTest -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:tests.EndToEndTest@754ba872]" name="afterMethod" is-config="true" duration-ms="0" started-at="2019-05-11T06:27:10Z" finished-at="2019-05-11T06:27:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-      </class> <!-- tests.GuestEndToEndTest -->
+        <test-method status="PASS" signature="adminVerification()[pri:6, instance:tests.EndToEndTest@754ba872]" name="adminVerification" duration-ms="19165" started-at="2019-05-11T06:27:10Z" depends-on-methods="tests.EndToEndTest.guestReviewAndPlaceOrderTest" finished-at="2019-05-11T06:27:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- adminVerification -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:tests.EndToEndTest@754ba872]" name="afterMethod" is-config="true" duration-ms="1" started-at="2019-05-11T06:27:30Z" finished-at="2019-05-11T06:27:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:tests.EndToEndTest@754ba872]" name="afterClass" is-config="true" duration-ms="849" started-at="2019-05-11T06:27:30Z" finished-at="2019-05-11T06:27:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+      </class> <!-- tests.EndToEndTest -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

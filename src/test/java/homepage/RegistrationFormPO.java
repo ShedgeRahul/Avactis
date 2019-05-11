@@ -54,6 +54,19 @@ public class RegistrationFormPO extends LoadableComponent<RegistrationFormPO>
 	@FindBy (xpath = "//input[@type='submit']")
 	WebElement register;
 	
+
+	@FindBy (xpath = "//div[text()='The password you entered is incorrect. Please enter the correct password.']")
+	WebElement incorrectPasswordMessage;
+	
+	@FindBy (xpath = "//div[@class='note note-danger']['contains(text(),Invalid data in field E-mail.)'][2]")
+	WebElement incorrectEmailMessage;
+	
+	@FindBy (xpath = "//div[@class='note note-danger']['contains(text(),Invalid data in field E-mail.)'][3]")
+	WebElement incorrectFirstNameMessage;
+	
+	@FindBy (xpath = "//div[@class='note note-danger']['contains(text(),Invalid data in field E-mail.)'][4]")
+	WebElement incorrectLastNameMessage;
+	
 	private WebDriver driver;
 	private String expectedTitle = "Avactis Demo Store";
 	private WebDriverWait wait;
@@ -147,7 +160,27 @@ public class RegistrationFormPO extends LoadableComponent<RegistrationFormPO>
 		wait.until(ExpectedConditions.visibilityOf(register)).click();
 		//register.click();
 	}
+	
+	public String getIncorrectPasswordMessage()
+	{
+		return (wait.until(ExpectedConditions.visibilityOf(incorrectPasswordMessage))).getText();
+	}
 
+	public String getIncorrectEmailMessage()
+	{
+		return (wait.until(ExpectedConditions.visibilityOf(incorrectEmailMessage))).getText();
+	}
+	
+	public String getIncorrectFirstNameMessage()
+	{
+		return (wait.until(ExpectedConditions.visibilityOf(incorrectFirstNameMessage))).getText();
+	}
+	
+	public String getIncorrectLastNameMessage()
+	{
+		return (wait.until(ExpectedConditions.visibilityOf(incorrectLastNameMessage))).getText();
+	}
+	
 	public String getTitle()
 	{
 		return driver.getTitle();

@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import homepage.HomePO;
 import homepage.LoginPO;
 import homepage.MyAccountPO;
-import homepage.RegistrationFormPO;
 import utility.ConfigProperties;
 import utility.Initialisation;
 import utility.Log;
@@ -23,7 +22,6 @@ public class ValidLoginTest
 {
 	HomePO homePage;
 	LoginPO loginPage;
-	RegistrationFormPO registrationFormPage;
 	MyAccountPO myAccountPage;
 
 	
@@ -61,7 +59,6 @@ public class ValidLoginTest
 	  
 	  homePage = new HomePO();
 	  loginPage = new LoginPO();
-	  registrationFormPage = new RegistrationFormPO();
 	  myAccountPage = new MyAccountPO();
 	  DOMConfigurator.configure("log4j-config.xml");
 	  Log.info("Before method completed");

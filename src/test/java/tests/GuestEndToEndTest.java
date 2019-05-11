@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 import utility.CustomListener;
 import homepage.AddToCartPO;
 import homepage.AdminLoginPO;
+import homepage.AdminOrdersPO;
 import homepage.CheckoutPO;
 import homepage.ThankYouPO;
 import utility.ConfigProperties;
@@ -13,10 +14,10 @@ import utility.RandomData;
 import utility.SystemDateAndTime;
 import utility.XlsDP;
 
-import org.testng.annotations.BeforeMethod;
 
 import org.apache.log4j.xml.DOMConfigurator;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -27,6 +28,7 @@ import org.testng.annotations.Parameters;
 @Listeners (CustomListener.class)
 public class GuestEndToEndTest 
 {
+	String finalOrderTotalWithDollar;
 	String orderID;
 	 double actualOrdetTotal;
 	double shippingCost;
@@ -36,14 +38,23 @@ public class GuestEndToEndTest
 	CheckoutPO checkoutPage;
 	ThankYouPO thankYouPage;
 	AdminLoginPO adminLoginPage;
+	AdminOrdersPO adminOrdersPage;
   @Parameters({"Browser","TestEnv"})	
   @BeforeClass
   public void beforeClass(@Optional ("CH") String browser, @Optional ("http://localhost/Avactis/") String testEnv)
   {
 	  Initialisation.setBrowser(browser, testEnv);
+	  Log.info("Inside Before Class");
+	  addToCart = new AddToCartPO();  
+	  checkoutPage = new CheckoutPO();
+	  thankYouPage = new ThankYouPO();
+	  adminLoginPage = new AdminLoginPO();
+	  adminOrdersPage = new AdminOrdersPO();
+	  DOMConfigurator.configure("log4j-config.xml");
+	  Log.info("Before method completed");
   }
 	
-  @Test(dataProvider = "productsDetails")
+  @Test(dataProvider = "productsDetails", priority = 0)
   public void guestSelectProductTest(String menu, String subMenu, String product, String cost) throws InterruptedException 
   {	  
 	  expectedProductCount++;
@@ -61,7 +72,7 @@ public class GuestEndToEndTest
   
   }
   
-  @Test (dependsOnMethods = {"guestSelectProductTest"})
+  @Test (dependsOnMethods = {"guestSelectProductTest"}, priority = 1)
   public void verifyMinicartCountTest()
   {
 	 int selectedIteamsCount = addToCart.minicartIteamsSize();
@@ -69,7 +80,7 @@ public class GuestEndToEndTest
 	 Log.info("Expected and actual product count matched ");
   }
   
-  @Test (dependsOnMethods = {"verifyMinicartCountTest"})
+  @Test (dependsOnMethods = {"verifyMinicartCountTest"}, priority = 2)
   public void setShippingBillingAddressTest()
   {
 	  addToCart.checkout();
@@ -92,8 +103,8 @@ public class GuestEndToEndTest
   }
   
   
-  @Test (dependsOnMethods = {"setShippingBillingAddressTest"})
-  public void  reviewAndPlaceOrderTest() throws InterruptedException
+  @Test (dependsOnMethods = {"setShippingBillingAddressTest"}, priority = 3)
+  public void  reviewAndPlaceOrderTest()
   {
 	checkoutPage.selectThirdShippingOption();
 	String shippingCostWithDoller = checkoutPage.getShippingCost();
@@ -125,8 +136,11 @@ public class GuestEndToEndTest
 	
 	checkoutPage.clickPlaceOrder();
 	
-	thankYouPage.getOrderID();
-	String finalOrderTotalWithDollar = thankYouPage.getFinalOrderTotal();
+	orderID = thankYouPage.getOrderID();
+	orderID = orderID.replaceAll("[#]", "");
+	Log.info("orderID after replaceing # is:"+orderID);
+	finalOrderTotalWithDollar = thankYouPage.getFinalOrderTotal();
+	Log.info("Final order total with Doller - "+finalOrderTotalWithDollar);
 	String finalOrderTotalwithoutDoller = finalOrderTotalWithDollar.replaceAll("[$,]","");
 	double finalOrderTotal = Double.parseDouble(finalOrderTotalwithoutDoller);
 	
@@ -136,7 +150,7 @@ public class GuestEndToEndTest
   }
   
   
- // @Test (dependsOnMethods = {"setShippingBillingAddressTest"})
+  @Test (priority = 4) //(dependsOnMethods = {"reviewAndPlaceOrderTest"})
   public void adminVerification()
   {
 	  adminLoginPage.openAdminSite();
@@ -144,21 +158,21 @@ public class GuestEndToEndTest
 	  adminLoginPage.setPassword(ConfigProperties.getProperty("Admin_Password"));
 	  adminLoginPage.clickSignIn();
 	  adminLoginPage.clickTitleOrders();
+	  //String expectedValueOfCol = "Amount";
+	 String adminAmount = adminOrdersPage.getAmount(orderID,"Amount");
+	 
+	 Assert.assertEquals(adminAmount, finalOrderTotalWithDollar);
+	 Log.info("Admin orderID is matched with user orderID ");
   }
   
-  
-  @BeforeMethod
-  public void beforeMethod() 
+  @AfterClass
+  public void afterClass()
   {
-	  Log.info("Inside Before Method");
-	  addToCart = new AddToCartPO();  
-	  checkoutPage = new CheckoutPO();
-	  thankYouPage = new ThankYouPO();
-	  adminLoginPage = new AdminLoginPO();
-	  DOMConfigurator.configure("log4j-config.xml");
-	  Log.info("Before method completed");
+	  
+	 Log.info("Driver Close");
+	 Initialisation.quitBrowser();
   }
-
+  
   @AfterMethod
   public void afterMethod() 
   {

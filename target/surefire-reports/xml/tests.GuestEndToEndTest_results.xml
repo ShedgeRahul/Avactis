@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Test"
+           tests="7"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="72.880">
+  <properties />
+  
+  
+            <testcase name="verifyMinicartCountTest" time="0.056" classname="tests.GuestEndToEndTest" />
+                <testcase name="adminVerification" time="17.740" classname="tests.GuestEndToEndTest" />
+                <testcase name="guestSelectProductTest" time="9.469" classname="tests.GuestEndToEndTest" />
+                <testcase name="guestSelectProductTest" time="7.323" classname="tests.GuestEndToEndTest" />
+                <testcase name="reviewAndPlaceOrderTest" time="14.901" classname="tests.GuestEndToEndTest" />
+                <testcase name="guestSelectProductTest" time="12.691" classname="tests.GuestEndToEndTest" />
+                <testcase name="setShippingBillingAddressTest" time="10.700" classname="tests.GuestEndToEndTest" />
+      
+</testsuite>

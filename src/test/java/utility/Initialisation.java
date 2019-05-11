@@ -72,11 +72,18 @@ public class Initialisation
 		}
 		
 	
+	public static void refreshBrowser()
+		{
+			driver.navigate().refresh();
+		}
+	
+	
+	
 	public void failed(String testMethodName)
 	{
 		File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		try {
-			FileUtils.copyFile(srcFile, new File("C:\\Workspace\\Avactis\\ScreenShots\\"+testMethodName), true);
+			FileUtils.copyFile(srcFile, new File("C:\\Workspace\\Avactis\\ScreenShots\\"+System.currentTimeMillis()+".png"));
 		//(srcFile, new File("C:\\Workspace\\Avactis\\ScreenShots\\"+testMethodName+".jpg"));
 			//+this.getClass().getName()+"_"
 		} catch (IOException e) {

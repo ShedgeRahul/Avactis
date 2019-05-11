@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Test"
+           tests="9"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="131.186">
+  <properties />
+  
+  
+            <testcase name="e2eRegistrationTest" time="23.190" classname="tests.EndToEndTest" />
+                <testcase name="guestSetShippingBillingAddressTest" time="12.363" classname="tests.EndToEndTest" />
+                <testcase name="adminVerification" time="19.165" classname="tests.EndToEndTest" />
+                <testcase name="guestSelectProductTest" time="13.701" classname="tests.EndToEndTest" />
+                <testcase name="guestReviewAndPlaceOrderTest" time="13.189" classname="tests.EndToEndTest" />
+                <testcase name="guestVerifyMinicartCountTest" time="0.033" classname="tests.EndToEndTest" />
+                <testcase name="guestSelectProductTest" time="19.906" classname="tests.EndToEndTest" />
+                <testcase name="e2eLogInTest" time="15.173" classname="tests.EndToEndTest" />
+                <testcase name="guestSelectProductTest" time="14.466" classname="tests.EndToEndTest" />
+      
+</testsuite>
